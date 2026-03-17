@@ -118,11 +118,25 @@ window.addEventListener('click', function(e) {
   }
 });
 
+const hero = document.querySelector('.hero');
+const heroContent = document.querySelector('.hero-content');
 
+if (hero && heroContent) {
+  hero.addEventListener('mousemove', (event) => {
+    const rect = hero.getBoundingClientRect();
+    const x = event.clientX - rect.left;
+    const y = event.clientY - rect.top;
+    const rotateY = ((x / rect.width) - 0.5) * 12;
+    const rotateX = -((y / rect.height) - 0.5) * 10;
 
-// 
-// 
-// 
+    heroContent.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+  });
+
+  hero.addEventListener('mouseleave', () => {
+    heroContent.style.transform = 'rotateX(0deg) rotateY(0deg)';
+  });
+}
+
 function reveal() {
   const reveals = document.querySelectorAll(".reveal");
 
@@ -141,3 +155,19 @@ function reveal() {
 
 window.addEventListener("scroll", reveal);
 window.addEventListener("load", reveal);
+
+
+
+window.addEventListener('load', () => {
+  const preloader = document.getElementById('preloader');
+  const mainContent = document.getElementById('main-content');
+  const heroSection = document.querySelector('.hero');
+
+  setTimeout(() => {
+    preloader.classList.add('hide');
+
+    // Asosiy kontent ko'rinishi va hero animatsiyasi
+    mainContent.style.display = 'block';
+    heroSection && heroSection.classList.add('loaded');
+  }, 1000);
+});
