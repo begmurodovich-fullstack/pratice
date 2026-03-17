@@ -311,6 +311,17 @@ footer {
   margin: 0 auto;
 }
 
+/* Typing Effect */
+#typing {
+  border-right: 2px solid var(--text-primary);
+  animation: blink 1s infinite;
+}
+
+@keyframes blink {
+  0%, 50% { border-color: var(--text-primary); }
+  51%, 100% { border-color: transparent; }
+}
+
 @media (max-width: 1024px) {
   .hero {
     padding: 80px 20px;
