@@ -90,7 +90,7 @@ window.addEventListener('scroll', () => {
     navbar.classList.remove('scrolled');
   }
 
-  if (currentScroll > lastScrollPos && currentScroll > 120) {
+  if (currentScroll > lastScrollPos && currentScroll > 350) {
     navbar.classList.add('hide');
     navbar.classList.remove('show');
   } else {
