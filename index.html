@@ -3,93 +3,442 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Azizbekning portfolio sayti - Full-Stack Developer">
-  <meta name="keywords" content="portfolio, developer, full-stack, Azizbek">
-  <title>Azizbek Portfolio</title>
+  <meta name="description" content="Azizbek - Full-Stack Developer Portfolio">
+  <meta name="keywords" content="portfolio, developer, full-stack, web developer, Uzbekistan">
+  <meta name="author" content="Azizbek">
+  <meta property="og:title" content="Azizbek Portfolio">
+  <meta property="og:description" content="Professional Full-Stack Developer Portfolio">
+  <meta property="og:type" content="website">
+  <title>Azizbek | Full-Stack Developer</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  
   <link rel="stylesheet" href="css/style.css">
   <link rel="icon" href="images/favicon.svg" type="image/x-icon">
 </head>
 <body>
+  <div id="cursor" class="cursor"></div>
+  <div id="cursor-follower" class="cursor-follower"></div>
+  
   <div id="preloader" class="preloader">
-    <div class="spinner"></div>
-    <p class="preloader-text">Yuklanmoqda ...</p>
+    <div class="preloader-content">
+      <div class="loader-ring"></div>
+      <span class="preloader-text">Loading...</span>
+    </div>
   </div>
+
+  <canvas id="particles-canvas"></canvas>
+
   <nav class="navbar">
     <div class="nav-container">
-      <a href="#home" class="logo">Azizbek</a>
-      <ul class="nav-menu">
-        <li><a href="#home">Home</a></li>
-        <li><a href="#about">About</a></li>
-        <li><a href="#projects">Projects</a></li>
-        <li><a href="#contact">Contact</a></li>
-      </ul>
-      <button id="dark-mode-toggle" class="dark-mode-toggle" aria-label="Toggle dark mode">
-        <span class="toggle-icon">🌙</span>
+      <a href="#home" class="logo">
+        <span class="logo-bracket">&lt;</span>Azizbek<span class="logo-bracket">/&gt;</span>
+      </a>
+      
+      <div class="nav-links">
+        <a href="#home" class="nav-link active" data-text="Home">Home</a>
+        <a href="#about" class="nav-link" data-text="About">About</a>
+        <a href="#skills" class="nav-link" data-text="Skills">Skills</a>
+        <a href="#projects" class="nav-link" data-text="Projects">Projects</a>
+        <a href="#contact" class="nav-link" data-text="Contact">Contact</a>
+      </div>
+      
+      <button id="theme-toggle" class="theme-toggle" aria-label="Toggle theme">
+        <span class="theme-icon">◐</span>
+      </button>
+      
+      <button class="hamburger" id="hamburger" aria-label="Menu">
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
       </button>
     </div>
   </nav>
 
-  <header id="home" class="hero">
-    <div class="hero-content">
-
-      <img src="images/profile.svg" alt="Azizbek" class="profile-img">
-
-      <h1>Salom, men Azizbek</h1>
-      <p id="typing2">Kelajakdagi<span id="typing"></span></p><br>
-      <a href="#about" class="cta-button">Men haqimda bilib oling</a>
+  <div class="mobile-menu" id="mobile-menu">
+    <div class="mobile-menu-content">
+      <a href="#home" class="mobile-link">Home</a>
+      <a href="#about" class="mobile-link">About</a>
+      <a href="#skills" class="mobile-link">Skills</a>
+      <a href="#projects" class="mobile-link">Projects</a>
+      <a href="#contact" class="mobile-link">Contact</a>
     </div>
-  </header>
+  </div>
 
-  <main id="main-content" style="display:none;">
-    <section id="about" class="about-section">
-      <div class="container">
-       
-        <h2>Men haqimda</h2>
-        <p>Men web dasturlashga qiziqaman va Full-Stack Developer bo'lishni maqsad qilganman. HTML, CSS, JavaScript va backend texnologiyalarida tajriba orttiraman.</p>
-        <div class="skills">
-          <span class="skill">HTML</span>
-          <span class="skill">CSS</span>
-          <span class="skill">JavaScript</span>
-          <span class="skill">React.js</span>
+  <main id="main-content">
+    <section id="home" class="hero">
+      <div class="hero-bg"></div>
+      <div class="hero-content">
+        <div class="hero-badge">
+          <span class="badge-dot"></span>
+          Available for work
+        </div>
+        
+        <h1 class="hero-title">
+          <span class="title-line">Salom, men</span>
+          <span class="title-name">Azizbek</span>
+        </h1>
+        
+        <div class="hero-typing">
+          <span class="typing-text">I'm a</span>
+          <span class="typing-wrapper">
+            <span id="typing" class="typing"></span>
+            <span class="cursor-blink">|</span>
+          </span>
+        </div>
+        
+        <p class="hero-description">
+          Full-Stack Developer who crafts exceptional digital experiences with modern technologies.
+        </p>
+        
+        <div class="hero-buttons">
+          <a href="#projects" class="btn btn-primary">
+            <span>View Projects</span>
+            <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M7 17L17 7M17 7H7M17 7V17"/>
+            </svg>
+          </a>
+          <a href="#contact" class="btn btn-outline">
+            <span>Contact Me</span>
+          </a>
+        </div>
+        
+        <div class="hero-scroll">
+          <span>Scroll Down</span>
+          <div class="scroll-line"></div>
+        </div>
+      </div>
+      
+      <div class="hero-visual">
+        <div class="code-window">
+          <div class="window-header">
+            <div class="window-dot red"></div>
+            <div class="window-dot yellow"></div>
+            <div class="window-dot green"></div>
+            <span class="file-name">developer.js</span>
+          </div>
+          <div class="window-content">
+            <pre><code><span class="keyword">const</span> <span class="variable">developer</span> = {
+  <span class="property">name</span>: <span class="string">"Azizbek"</span>,
+  <span class="property">skills</span>: [<span class="string">"React"</span>, <span class="string">"Node"</span>, <span class="string">"Flutter"</span>],
+  <span class="property">passion</span>: <span class="string">"Building the future"</span>,
+  <span class="method">createMagic</span>: () => <span class="string">"✨"</span>
+};</code></pre>
+          </div>
         </div>
       </div>
     </section>
 
-<!-- 🔥 MODAL -->
-<div id="modal" class="modal">
-  <div class="modal-content">
-    <span class="close" onclick="closeModal()">&times;</span>
-    <h2>Project Title</h2>
-    <p>Bu yerda project haqida info bo‘ladi</p>
-  </div>
-</div>
+    <section id="about" class="about-section">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag">01. About Me</span>
+          <h2 class="section-title">Who Am I?</h2>
+        </div>
+        
+        <div class="about-content">
+          <div class="about-text">
+            <p>
+              Men <strong>Azizbek Begmurodov</strong>, 17 yoshli web va mobile dasturchi. 
+              Texnologiyalarga bo'lgan qiziqishimni professional karyeraga aylantirdim.
+            </p>
+            <p>
+              Full-Stack Development va Flutter sohasida tajriba orttiraman. 
+              Har bir loyihaga individual yondashuv bilan yondoshaman va 
+              foydalanuvchi tajribasini birinchi o'ringa qo'yaman.
+            </p>
+            <p>
+              Mening maqsadim - zamonaviy, performant va foydalanuvchilarga qulay 
+              ilovalar yaratish orqali biznes va texnologiyalarni bog'lash.
+            </p>
+            
+            <div class="about-stats">
+              <div class="stat-item">
+                <span class="stat-number" data-count="2">0</span>
+                <span class="stat-label">Years Experience</span>
+              </div>
+              <div class="stat-item">
+                <span class="stat-number" data-count="15">0</span>
+                <span class="stat-label">Projects Completed</span>
+              </div>
+              <div class="stat-item">
+                <span class="stat-number" data-count="8">0</span>
+                <span class="stat-label">Happy Clients</span>
+              </div>
+            </div>
+          </div>
+          
+          <div class="about-image">
+            <div class="image-wrapper">
+              <img src="images/profile.svg" alt="Azizbek" class="profile-photo">
+              <div class="image-border"></div>
+              <div class="image-glow"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="skills" class="skills-section">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag">02. Skills</span>
+          <h2 class="section-title">What I Do</h2>
+        </div>
+        
+        <div class="skills-grid">
+          <div class="skill-card">
+            <div class="skill-icon">🎨</div>
+            <h3 class="skill-title">Frontend</h3>
+            <p class="skill-desc">Modern React, HTML5, CSS3, JavaScript, responsive design</p>
+            <div class="skill-tags">
+              <span class="tag">React</span>
+              <span class="tag">JavaScript</span>
+              <span class="tag">CSS3</span>
+              <span class="tag">HTML5</span>
+            </div>
+          </div>
+          
+          <div class="skill-card">
+            <div class="skill-icon">⚙️</div>
+            <h3 class="skill-title">Backend</h3>
+            <p class="skill-desc">Node.js, Express, API development, database management</p>
+            <div class="skill-tags">
+              <span class="tag">Node.js</span>
+              <span class="tag">Express</span>
+              <span class="tag">MongoDB</span>
+            </div>
+          </div>
+          
+          <div class="skill-card">
+            <div class="skill-icon">📱</div>
+            <h3 class="skill-title">Mobile</h3>
+            <p class="skill-desc">Cross-platform mobile apps with Flutter and Firebase</p>
+            <div class="skill-tags">
+              <span class="tag">Flutter</span>
+              <span class="tag">Firebase</span>
+              <span class="tag">Dart</span>
+            </div>
+          </div>
+          
+          <div class="skill-card">
+            <div class="skill-icon">🛠️</div>
+            <h3 class="skill-title">Tools</h3>
+            <p class="skill-desc">Git, VS Code, Figma, deployment, CI/CD</p>
+            <div class="skill-tags">
+              <span class="tag">Git</span>
+              <span class="tag">Figma</span>
+              <span class="tag">Docker</span>
+            </div>
+          </div>
+        </div>
+        
+        <div class="skills-bars">
+          <div class="skill-bar">
+            <div class="bar-info">
+              <span class="bar-name">React / JavaScript</span>
+              <span class="bar-percent">90%</span>
+            </div>
+            <div class="bar-track">
+              <div class="bar-fill" data-width="90"></div>
+            </div>
+          </div>
+          <div class="skill-bar">
+            <div class="bar-info">
+              <span class="bar-name">Node.js / Express</span>
+              <span class="bar-percent">85%</span>
+            </div>
+            <div class="bar-track">
+              <div class="bar-fill" data-width="85"></div>
+            </div>
+          </div>
+          <div class="skill-bar">
+            <div class="bar-info">
+              <span class="bar-name">Flutter / Dart</span>
+              <span class="bar-percent">88%</span>
+            </div>
+            <div class="bar-track">
+              <div class="bar-fill" data-width="88"></div>
+            </div>
+          </div>
+          <div class="skill-bar">
+            <div class="bar-info">
+              <span class="bar-name">CSS / Animations</span>
+              <span class="bar-percent">92%</span>
+            </div>
+            <div class="bar-track">
+              <div class="bar-fill" data-width="92"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <section id="projects" class="projects-section">
       <div class="container">
-        <h2>Projectlarim</h2>
-        <div class="cards">
-          <div class="card modal-trigger reveal" onclick="openModal()">
-            <h3>Project 1</h3>
-            <p>Web sayt yaratish loyihasi. HTML va CSS ishlatilgan.</p>
+        <div class="section-header">
+          <span class="section-tag">03. Projects</span>
+          <h2 class="section-title">My Work</h2>
+        </div>
+        
+        <div class="projects-filter">
+          <button class="filter-btn active" data-filter="all">All</button>
+          <button class="filter-btn" data-filter="web">Web</button>
+          <button class="filter-btn" data-filter="mobile">Mobile</button>
+          <button class="filter-btn" data-filter="fullstack">Full-Stack</button>
+        </div>
+        
+        <div class="projects-grid">
+          <div class="project-card" data-category="fullstack">
+            <div class="project-image">
+              <div class="project-overlay">
+                <a href="#" class="project-link">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6M15 3h6v6M10 14L21 3"/>
+                  </svg>
+                </a>
+              </div>
+              <div class="project-placeholder">
+                <span>E-Commerce Platform</span>
+              </div>
+            </div>
+            <div class="project-info">
+              <span class="project-category">Full-Stack</span>
+              <h3 class="project-title">E-Commerce Platform</h3>
+              <p class="project-desc">Full-featured online store with cart, payments, and admin dashboard</p>
+              <div class="project-tech">
+                <span>React</span>
+                <span>Node.js</span>
+                <span>MongoDB</span>
+              </div>
+            </div>
           </div>
-          <div class="card modal-trigger reveal" onclick="openModal()">
-            <h3>Project 2</h3>
-            <p>JavaScript bilan interaktiv kalkulyator.</p>
+          
+          <div class="project-card" data-category="web">
+            <div class="project-image">
+              <div class="project-overlay">
+                <a href="#" class="project-link">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6M15 3h6v6M10 14L21 3"/>
+                  </svg>
+                </a>
+              </div>
+              <div class="project-placeholder">
+                <span>Portfolio Website</span>
+              </div>
+            </div>
+            <div class="project-info">
+              <span class="project-category">Web</span>
+              <h3 class="project-title">Portfolio Website</h3>
+              <p class="project-desc">Modern responsive portfolio with smooth animations and interactions</p>
+              <div class="project-tech">
+                <span>HTML</span>
+                <span>CSS</span>
+                <span>JavaScript</span>
+              </div>
+            </div>
           </div>
-          <div class="card modal-trigger reveal" onclick="openModal()">
-            <h3>Project 3</h3>
-            <p>Portfolio sayti - bu loyiha.</p>
+          
+          <div class="project-card" data-category="mobile">
+            <div class="project-image">
+              <div class="project-overlay">
+                <a href="#" class="project-link">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6M15 3h6v6M10 14L21 3"/>
+                  </svg>
+                </a>
+              </div>
+              <div class="project-placeholder">
+                <span>Chat Application</span>
+              </div>
+            </div>
+            <div class="project-info">
+              <span class="project-category">Mobile</span>
+              <h3 class="project-title">Chat Application</h3>
+              <p class="project-desc">Real-time messaging app with voice messages and media sharing</p>
+              <div class="project-tech">
+                <span>Flutter</span>
+                <span>Firebase</span>
+                <span>Dart</span>
+              </div>
+            </div>
           </div>
-          <div class="card modal-trigger reveal" onclick="openModal()">
-            <h3>Project 4</h3>
-            <p>API bilan ishlash uchun backend loyihasi.</p>
+          
+          <div class="project-card" data-category="fullstack">
+            <div class="project-image">
+              <div class="project-overlay">
+                <a href="#" class="project-link">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6M15 3h6v6M10 14L21 3"/>
+                  </svg>
+                </a>
+              </div>
+              <div class="project-placeholder">
+                <span>Task Manager</span>
+              </div>
+            </div>
+            <div class="project-info">
+              <span class="project-category">Full-Stack</span>
+              <h3 class="project-title">Task Manager</h3>
+              <p class="project-desc">Project management tool with team collaboration features</p>
+              <div class="project-tech">
+                <span>React</span>
+                <span>Node.js</span>
+                <span>Socket.io</span>
+              </div>
+            </div>
           </div>
-          <div class="card modal-trigger reveal" onclick="openModal()">
-            <h3>Project 5</h3>
-            <p>Mobil ilova prototipi.</p>
+          
+          <div class="project-card" data-category="web">
+            <div class="project-image">
+              <div class="project-overlay">
+                <a href="#" class="project-link">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6M15 3h6v6M10 14L21 3"/>
+                  </svg>
+                </a>
+              </div>
+              <div class="project-placeholder">
+                <span>Weather App</span>
+              </div>
+            </div>
+            <div class="project-info">
+              <span class="project-category">Web</span>
+              <h3 class="project-title">Weather App</h3>
+              <p class="project-desc">Beautiful weather dashboard with location-based forecasts</p>
+              <div class="project-tech">
+                <span>JavaScript</span>
+                <span>API</span>
+                <span>CSS3</span>
+              </div>
+            </div>
           </div>
-          <div class="card modal-trigger reveal" onclick="openModal()">
-            <h3>Project 6</h3>
-            <p>E-commerce platformasi.</p>
+          
+          <div class="project-card" data-category="mobile">
+            <div class="project-image">
+              <div class="project-overlay">
+                <a href="#" class="project-link">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6M15 3h6v6M10 14L21 3"/>
+                  </svg>
+                </a>
+              </div>
+              <div class="project-placeholder">
+                <span>Fitness Tracker</span>
+              </div>
+            </div>
+            <div class="project-info">
+              <span class="project-category">Mobile</span>
+              <h3 class="project-title">Fitness Tracker</h3>
+              <p class="project-desc">Health and fitness tracking with workout plans and progress</p>
+              <div class="project-tech">
+                <span>Flutter</span>
+                <span>Firebase</span>
+                <span>BLoC</span>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -97,29 +446,93 @@
 
     <section id="contact" class="contact-section">
       <div class="container">
-        <h2>Bog'lanish</h2>
-        <p>Mening bilan bog'laning va hamkorlik qilaylik!</p>
-        <div class="social-links">
-          <a href="https://t.me/begmurodovich1303" target="_blank" class="social-icon telegram">
-            <img src="images/tg.svg" alt="Telegram" class="icon">
-            Telegram
-          </a>
-          <a href="https://www.instagram.com/__begmurodovich__" target="_blank" class="social-icon instagram">
-            <img src="images/insta.svg" alt="Instagram" class="icon">
-            Instagram
-          </a>
+        <div class="section-header">
+          <span class="section-tag">04. Contact</span>
+          <h2 class="section-title">Get In Touch</h2>
+        </div>
+        
+        <div class="contact-content">
+          <div class="contact-info">
+            <h3>Let's work together!</h3>
+            <p>
+              Agar sizda qandaydir loyiha bor yoki men bilan ishlashni xohlasangiz, 
+              aloqaga chiqishdan tortinmang. Har doim yangi imkoniyatlar izlayapman.
+            </p>
+            
+            <div class="contact-methods">
+              <a href="mailto:begmurodovich1303@gmail.com" class="contact-item">
+                <div class="contact-icon">📧</div>
+                <div class="contact-details">
+                  <span class="contact-label">Email</span>
+                  <span class="contact-value">begmurodovich1303@gmail.com</span>
+                </div>
+              </a>
+              
+              <a href="https://t.me/begmurodovich1303" target="_blank" class="contact-item">
+                <div class="contact-icon">✈️</div>
+                <div class="contact-details">
+                  <span class="contact-label">Telegram</span>
+                  <span class="contact-value">@begmurodovich1303</span>
+                </div>
+              </a>
+              
+              <a href="https://github.com/begmurodovich" target="_blank" class="contact-item">
+                <div class="contact-icon">🐙</div>
+                <div class="contact-details">
+                  <span class="contact-label">GitHub</span>
+                  <span class="contact-value">github.com/begmurodovich</span>
+                </div>
+              </a>
+            </div>
+          </div>
+          
+          <form class="contact-form" id="contact-form">
+            <div class="form-group">
+              <input type="text" id="name" name="name" required placeholder=" ">
+              <label for="name">Your Name</label>
+            </div>
+            <div class="form-group">
+              <input type="email" id="email" name="email" required placeholder=" ">
+              <label for="email">Your Email</label>
+            </div>
+            <div class="form-group">
+              <textarea id="message" name="message" rows="5" required placeholder=" "></textarea>
+              <label for="message">Your Message</label>
+            </div>
+            <button type="submit" class="btn btn-primary btn-submit">
+              <span>Send Message</span>
+              <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"/>
+              </svg>
+            </button>
+          </form>
         </div>
       </div>
     </section>
   </main>
 
-  <footer>
-    <div class="footer-content">
-      <p>&copy; 2026 Azizbek. Barcha huquqlar himoyalangan.</p>
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-brand">
+          <span class="logo-bracket">&lt;</span>Azizbek<span class="logo-bracket">/&gt;</span>
+        </div>
+        <p class="footer-text">Building digital experiences with passion</p>
+        <div class="footer-social">
+          <a href="https://t.me/begmurodovich1303" target="_blank" class="social-link">✈️</a>
+          <a href="https://www.instagram.com/__begmurodovich__" target="_blank" class="social-link">📷</a>
+          <a href="https://github.com/begmurodovich" target="_blank" class="social-link">🐙</a>
+          <a href="https://linkedin.com/in/begmurodovich" target="_blank" class="social-link">💼</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 Azizbek. All rights reserved.</p>
+      </div>
     </div>
   </footer>
-  <!-- version 1.0.0 -->
-  <script src="js/index.js"></script>
 
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script src="js/index.js"></script>
 </body>
 </html>
